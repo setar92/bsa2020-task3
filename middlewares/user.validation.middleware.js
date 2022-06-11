@@ -1,8 +1,12 @@
 const { user } = require('../models/user');
 const createUserValid = (req, res, next) => {
     // TODO: Implement validatior for user entity during creation
-
-    next();
+    if (req.body) {
+        console.log(req.body);
+        next();
+      } else {
+        res.status(401).send('jhhsjh 545')
+      }
 }
 
 const updateUserValid = (req, res, next) => {
