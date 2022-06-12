@@ -5,8 +5,7 @@ class UserService {
     // TODO: Implement methods to work with user
 
     save(user) {
-        console.log(user, 'user в userService.save');
-        UserRepository.create(user);
+       return UserRepository.create(user);
     }
 
     search(search) {
