@@ -9,7 +9,6 @@ class UserService {
     }
 
     search(search) {
-        console.log('шукаємо такого юзера', search)
         const item = UserRepository.getOne(search);
         if(!item) {
             return null;
