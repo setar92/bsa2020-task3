@@ -6,15 +6,38 @@ const { responseMiddleware } = require('../middlewares/response.middleware');
 const router = Router();
 
 router.post('/', createUserValid, function (req, res, next) {
-//я добавив трай кетч і в кінці виклик респонс
-        try {
-            let data = UserService.save(req.body);
-               res.data = data;
-           } catch (err) {
-               res.err = err;
-           } finally {
-               next();
-           }
+    try {
+        let data = UserService.save(req.body);
+        res.data = data;
+    } catch (err) {
+        res.err = err;
+    } finally {
+        next();
+    }
+
+}, responseMiddleware);
+
+router.get('/:id', function (req, res, next) {
+    try {
+        let data = UserService.getOne(req.params.id);
+        res.data = data;
+    } catch (err) {
+        res.err = err;
+    } finally {
+        next();
+    }
+
+}, responseMiddleware);
+
+router.delete('/:id', function (req, res, next) {
+    try {
+        let data = UserService.delete(req.params.id);
+        res.data = data;
+    } catch (err) {
+        res.err = err;
+    } finally {
+        next();
+    }
 
 }, responseMiddleware);
 
