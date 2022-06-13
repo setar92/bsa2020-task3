@@ -1,8 +1,8 @@
-const { isArray } = require("lodash");
-
 const responseMiddleware = (req, res, next) => {
     // TODO: Implement middleware that returns result of the query
 console.log('а тепер заходимо в мідлвер');
+console.log(res.err, 'тут помилка');
+console.log(res.data, 'тут тіло');
     if (res.err) {
         res.status(404).end( JSON.stringify ({
                 error: true,
@@ -24,8 +24,9 @@ console.log('а тепер заходимо в мідлвер');
     }
     
     else {
-        res.status(200).end(JSON.stringify(res.data));
-        next();
+        console.log('маємо зайти  в елсе, типу все норм');
+        res.status(200).send(JSON.stringify(res.data));
+    //    next()
     }
 }
 

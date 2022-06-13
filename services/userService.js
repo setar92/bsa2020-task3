@@ -4,12 +4,19 @@ class UserService {
 
     // TODO: Implement methods to work with user
 
+
+    update(id, dataToUpdate) {
+        let data = this.getOne(id);
+        if (!data) return data;
+        return UserRepository.update(id, dataToUpdate);
+    }
+
     delete(id) {
         return UserRepository.delete(id)
     }
 
-    getOne(id) {
-        return UserRepository.getOne(id)
+    getOne(search) {
+        return UserRepository.getOne(search)
     }
 
     getAll() {

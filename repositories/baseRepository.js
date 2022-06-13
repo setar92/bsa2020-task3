@@ -8,6 +8,7 @@ class BaseRepository {
         this.collectionName = collectionName;
     }
 
+
     generateId() {
         return v4();
     }
@@ -16,9 +17,8 @@ class BaseRepository {
         return this.dbContext.value();
     }
 
-    getOne(id) {
-        //змінюю цей метод, щоб шукав по ід       
-        return this.dbContext.find({id}).value();
+    getOne(search) {
+        return this.dbContext.find(search).value();
     }
 
     create(data) {
@@ -35,7 +35,6 @@ class BaseRepository {
     }
 
     delete(id) {
-        console.log(id);
         return this.dbContext.remove({ id }).write();
     }
 }

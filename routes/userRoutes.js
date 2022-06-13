@@ -5,6 +5,30 @@ const { responseMiddleware } = require('../middlewares/response.middleware');
 
 const router = Router();
 
+router.get('/:id', function (req, res, next) {
+    try {
+        let data = UserService.getOne(req.body);
+        res.data = data;
+    } catch (err) {
+        res.err = err;
+    } finally {
+        next();
+    }
+
+}, responseMiddleware);
+
+router.get('/', function (req, res, next) {
+    try {
+        let data = UserService.getAll();
+        res.data = data;
+    } catch (err) {
+        res.err = err;
+    } finally {
+        next();
+    }
+
+}, responseMiddleware);
+
 router.post('/', createUserValid, function (req, res, next) {
     try {
         let data = UserService.save(req.body);
@@ -17,9 +41,9 @@ router.post('/', createUserValid, function (req, res, next) {
 
 }, responseMiddleware);
 
-router.get('/:id', function (req, res, next) {
+router.delete('/:id', function (req, res, next) {
     try {
-        let data = UserService.getOne(req.params.id);
+        let data = UserService.delete(req.params.id);
         res.data = data;
     } catch (err) {
         res.err = err;
@@ -29,9 +53,9 @@ router.get('/:id', function (req, res, next) {
 
 }, responseMiddleware);
 
-router.delete('/:id', function (req, res, next) {
+router.put('/:id', updateUserValid, function (req, res, next) {
     try {
-        let data = UserService.delete(req.params.id);
+        let data = UserService.update(req.params.id, req.body);
         res.data = data;
     } catch (err) {
         res.err = err;

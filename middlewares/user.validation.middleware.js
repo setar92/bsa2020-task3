@@ -96,7 +96,7 @@ function validEmail(email) {
 
 function validDataIn(updateUser) {
   if ( updateUser.id || updateUser.firstName || updateUser.lastName || updateUser.email || updateUser.phoneNumber || updateUser.password ) return false;
-  return 'for updating fighter you should fill at least one field'
+  return 'for updating user you should fill at least one field'
 }
 
 exports.createUserValid = createUserValid;
