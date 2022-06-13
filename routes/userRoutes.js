@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/:id', function (req, res, next) {
     try {
-        let data = UserService.getOne(req.body);
+        let data = UserService.getOne();
         res.data = data;
     } catch (err) {
         res.err = err;

@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/:id', function (req, res, next) {
     try {
-        let data = FighterService.getOne(req.body);
+        let data = FighterService.getOne(req.params.id);
         res.data = data;
     } catch (err) {
         res.err = err;

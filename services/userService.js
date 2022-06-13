@@ -6,7 +6,9 @@ class UserService {
 
 
     update(id, dataToUpdate) {
-        let data = this.getOne(id);
+        //перевіряємо по ід чи така сутність існує
+
+        let data = this.getOne({ 'id': id });
         if (!data) return data;
         return UserRepository.update(id, dataToUpdate);
     }
@@ -15,8 +17,8 @@ class UserService {
         return UserRepository.delete(id)
     }
 
-    getOne(search) {
-        return UserRepository.getOne(search)
+    getOne(id) {
+        return UserRepository.getOne({ 'id': id })
     }
 
     getAll() {
@@ -24,6 +26,12 @@ class UserService {
     }
 
     save(user) {
+        if (this.search({ 'email': user.email })) {
+            throw new Error('this email is already registered');
+        }
+        if (this.search({ 'phoneNumber': user.phoneNumber })) {
+            throw new Error('this phone Number is already registered');
+        }
         return UserRepository.create(user);
     }
 

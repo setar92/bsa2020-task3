@@ -6,12 +6,10 @@ const createFighterValid = (req, res, next) => {
   if (!errorMessage) {
     next();
   } else {
-    res
-      .status(400)
-      .send(JSON.stringify({
+    res.status(400).json({
         error: true,
         message: `${errorMessage}`
-      }));
+      });
   }
   // TODO: Implement validatior for fighter entity during creation
   
@@ -25,12 +23,10 @@ const updateFighterValid = (req, res, next) => {
   if (!errorMessage) {
     next();
   } else {
-    res
-      .status(404)
-      .send(JSON.stringify({
+    res.status(400).json({
         error: true,
         message: `${errorMessage}`
-      }));
+      });
   }
   // TODO: Implement validatior for fighter entity during update
  
