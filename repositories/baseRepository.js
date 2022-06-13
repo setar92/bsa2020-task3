@@ -8,6 +8,7 @@ class BaseRepository {
         this.collectionName = collectionName;
     }
 
+
     generateId() {
         return v4();
     }

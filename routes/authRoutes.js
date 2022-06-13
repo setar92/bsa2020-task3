@@ -5,7 +5,9 @@ const { responseMiddleware } = require('../middlewares/response.middleware');
 const router = Router();
 
 router.post('/login', (req, res, next) => {
+   
     try {
+     let data = AuthService.login(req.body); //це я добавив
         // TODO: Implement login action (get the user if it exist with entered credentials)
         res.data = data;
     } catch (err) {
